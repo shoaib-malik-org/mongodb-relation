@@ -9,22 +9,52 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const main2 = require('./dbo');
-function relation(collectionName1, collectionName2) {
+const crudFunctions = require("./crud");
+function relation(coll1, coll2, where) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            return yield new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                const dbo = yield main2.GetDb();
-                yield dbo.collection(collectionName2.name).find(collectionName2.where).toArray((err, res) => {
-                    if (err)
-                        reject(err);
-                    else
-                        resolve(res);
-                });
-            }));
+            if (where === undefined) {
+                throw new Error("You must define the two keys for e.g { 'id': 'first_id' }\n see this error docs https://secondhandac.vercel.app");
+            }
+            const Query1 = QueryMaker(coll1, coll2, where, 'keys');
+            const Query2 = QueryMaker(coll1, coll2, where, 'values');
+            const data1 = yield crudFunctions.findMany(coll1.name, Query1);
+            const data2 = yield crudFunctions.findMany(coll2.name, Query2);
         }
         catch (error) {
             console.log(error);
         }
     });
+}
+function QueryMaker(coll1, coll2, where, know) {
+    var keys;
+    var collWhere;
+    if (know === 'keys') {
+        keys = Object.keys(where);
+        collWhere = coll1.where;
+    }
+    else if (know === 'values') {
+        keys = Object.values(where);
+        collWhere = coll2.where;
+    }
+    else {
+        keys = [];
+    }
+    var Query;
+    if (collWhere === undefined) {
+        Query = { $and: [], };
+        keys.forEach(value => {
+            Query['$and'].push({ [value]: { $exists: true } });
+        });
+    }
+    else {
+        // console.log(Object.keys())
+        Query = { $and: [], };
+        Query['$and'].push(collWhere);
+        keys.forEach(value => {
+            Query['$and'].push({ [value]: { $exists: true } });
+        });
+    }
+    return Query;
 }
 module.exports = relation;

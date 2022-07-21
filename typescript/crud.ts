@@ -28,7 +28,7 @@ async function insertOne(collectionName: string, obj: object): Promise<void> {
     }
 }
 
-async function findMany(collectionName: string, where: object): Promise<void> {
+async function findMany(collectionName: string, where?: object): Promise<void> {
     try {
         var setWhere: object = {};
         if (where !== undefined && typeof where === 'object') {

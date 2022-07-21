@@ -1,15 +1,8 @@
-// const readline = require('readline').createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//   });
-
-//   readline.question(`What's your name?`, name => {
-//     console.log(`Hi ${name}!`);
-//     readline.close();
-//   });
-
 const { crud, info, relate } = require('./mongo/index')
 const express = require('express')
+const fetch = require("node-fetch")
+const shortid = require('shortid');
+
 const app = express();
 app.listen(8000, (err) => {
     console.log('server has been started')
@@ -31,17 +24,27 @@ info.GetDb({
 //     next();
 // })
 
-
-
-app.get("/", (req, res) => {
-    
+app.get("/", async (req, res) => {
+    const p = await fetch('https://v2.jokeapi.dev/joke/Any')
+    const data = await p.json();
+    data.first_id = shortid.generate()
+    crud.insertOne('test', data).then((check) => { console.log(check) })
     res.json({ msg: "hell yeah" })
 })
 
-relate({ name: 'check' }, { name: "check", where: { name: "someone" } }).then((result) => { console.log(result) }).catch((err) => { console.log(err) })
+
+
+
+relate(
+    { name: 'check' },
+    { name: "test" },
+    )
+    .then((result) => { console.log(result) })
+    .catch((err) => { console.log(err) })
+
 
 // mongo.insertMany('check', [{ name: 'someone' }]).then((check) => { console.log(check) })
-// crud.insertOne('check', { name: 'someone' }).then((check) => { console.log(check) })
+
 // crud.findMany('check').then((result) => { console.log(result) })
 // crud.findOne('check', { name: 'someone' }).then((result) => { console.log(result) })
 // mongo.updateOne('check', { gender: 'transgender' }, { name: "suhail" }).then((result) => { console.log(result) })

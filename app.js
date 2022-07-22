@@ -38,15 +38,15 @@ app.get("/", async (req, res) => {
 relate(
     { name: 'check' },
     { name: "test" },
-    )
+    { "flags": "flags.test.id.name" })
     .then((result) => { console.log(result) })
     .catch((err) => { console.log(err) })
 
 
 // mongo.insertMany('check', [{ name: 'someone' }]).then((check) => { console.log(check) })
 
-// crud.findMany('check').then((result) => { console.log(result) })
-// crud.findOne('check', { name: 'someone' }).then((result) => { console.log(result) })
+// crud.findMany('test', { "flags.test.id.some": { $eq: '0' } }).then((result) => { console.log(result) })
+// crud.findOne('test', { "flags.test.id": { $eq: '0' } }).then((result) => { console.log(result) })
 // mongo.updateOne('check', { gender: 'transgender' }, { name: "suhail" }).then((result) => { console.log(result) })
 // mongo.replaceOne("check", { name: "suhail" }, { gender: 'transgender' }).then((result) => { console.log(result) })
 // crud.deleteOne('check', { name:"someone" }).then((result) => { console.log(result) })

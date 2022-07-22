@@ -20,11 +20,52 @@ function relation(coll1, coll2, where) {
             const Query2 = QueryMaker(coll1, coll2, where, 'values');
             const data1 = yield crudFunctions.findMany(coll1.name, Query1);
             const data2 = yield crudFunctions.findMany(coll2.name, Query2);
+            RecordsMaker(data1, data2, where);
         }
         catch (error) {
             console.log(error);
         }
     });
+}
+function RecordsMaker(data1, data2, where) {
+    // console.log(data1.length,data2.length,where)
+    const values = Object.values(where);
+    ArrOrObj(data2[0], values[0]);
+    // console.log(data1[0]['flags']['nsfw'])
+}
+function ArrOrObj(data, query) {
+    const indexs = [];
+    const seperateKeys = [];
+    for (var i = 0; i < query.length; i++) {
+        if (query[i] === '.')
+            indexs.push(i);
+    }
+    seperateKeys.push(query.slice(0, indexs[0]));
+    for (var i = 0; i < indexs.length; i++) {
+        seperateKeys.push(query.slice(indexs[i] + 1, indexs[i + 1]));
+    }
+    var func = `data['${seperateKeys[0]}']`;
+    var types = [];
+    seperateKeys.forEach((value, index) => {
+        console.log(func);
+        const check = Function('data', `return ${func}`);
+        const val = check(data);
+        if (typeof val === 'object' && val.length === undefined) {
+            func = func + `['${seperateKeys[index + 1]}']`;
+            types.push('object');
+        }
+        else if (typeof val === 'object' && val.length !== undefined) {
+            func = func + `[0]['${seperateKeys[index + 1]}']`;
+            types.push('array');
+        }
+        else {
+            types.push('end');
+        }
+    });
+    console.log(types);
+    // console.log(types)
+    // const check = Function("return 5")
+    // console.log(data[0]['test'])
 }
 function QueryMaker(coll1, coll2, where, know) {
     var keys;

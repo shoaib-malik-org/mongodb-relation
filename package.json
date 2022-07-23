@@ -5,7 +5,8 @@
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.19",
     "random-name": "^0.1.2",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "string-template": "^1.0.0"
   },
   "scripts": {
     "start": "nodemon app.js"

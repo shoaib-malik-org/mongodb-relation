@@ -25,11 +25,11 @@ info.GetDb({
 // })
 
 app.get("/", async (req, res) => {
-    const p = await fetch('https://v2.jokeapi.dev/joke/Any')
-    const data = await p.json();
-    data.first_id = shortid.generate()
-    crud.insertOne('test', data).then((check) => { console.log(check) })
-    res.json({ msg: "hell yeah" })
+    // const p = await fetch('https://v2.jokeapi.dev/joke/Any')
+    // const data = await p.json();
+    // data.first_id = shortid.generate()
+    // crud.insertOne('test', data).then((check) => { console.log(check) })
+    res.json([{ msg: "hell yeah" }])
 })
 
 
@@ -38,8 +38,8 @@ app.get("/", async (req, res) => {
 relate(
     { name: 'check' },
     { name: "test" },
-    { "flags": "flags.test.id.name" })
-    .then((result) => { console.log(result) })
+    { "id.arr.id": "flags.test.id" })
+    .then((result) => { console.log(result[0]) })
     .catch((err) => { console.log(err) })
 
 

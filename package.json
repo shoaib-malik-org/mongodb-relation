@@ -1,14 +1,26 @@
 {
-  "dependencies": {
-    "express": "^4.18.1",
-    "mongodb": "^4.8.0",
-    "node-fetch": "^2.6.7",
-    "nodemon": "^2.0.19",
-    "random-name": "^0.1.2",
-    "shortid": "^2.2.16",
-    "string-template": "^1.0.0"
-  },
+  "name": "mongod-relation",
+  "version": "1.0.0",
+  "description": "You can find collections by comparing with the first collection key to second collection key",
+  "main": "mongo/index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shoaib-malik-org/mongodb-relation.git"
+  },
+  "keywords": [
+    "mongod-relation"
+  ],
+  "author": "suheb-malik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoaib-malik-org/mongodb-relation/issues"
+  },
+  "homepage": "https://github.com/shoaib-malik-org/mongodb-relation#readme",
+  "dependencies": {
+    "mongodb": "^4.8.0",
+    "string-template": "^1.0.0"
   }
 }

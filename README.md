@@ -52,7 +52,7 @@ By this function you can find collection in your first collection in key `gotObj
 relate(object1, object2, relation);
 ```
 
-`object1` - {
+`object1` - {\n
   name:"Your collection name",
   where:{ category:"Programming" }
 }

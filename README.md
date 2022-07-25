@@ -52,7 +52,7 @@ By this function you can find collection in your first collection in key `gotObj
 relate(object1, object2, relation);
 ```
 
-#### explane
+## Explane
 ```bash
 `object1` - {
   name:"Your collection name",

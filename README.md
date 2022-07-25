@@ -57,7 +57,7 @@ relate(object1, object2, relation);
   name:"Your collection name",
   where:{ category:"Programming" }
 }
-where is optional and this where will work exactly like mongodb where work in there find function
+where is optional and this `where` will work exactly like mongodb where work in there find function
 
 `object2` - {
   name:"Your second collection name",
@@ -67,6 +67,14 @@ this is the collection where it find the collectoin that matches and insert in o
 
 `relation` - {
   id:"some_id"
+}
+id is the first collection key
+some_id is the second collection key
+
+# or ---
+
+`relation` - {
+  "flags.test.id":"id.arr.id"
 }
 id is the first collection key
 some_id is the second collection key

@@ -119,3 +119,7 @@ crud.deleteMany("collection name", { name: "john" }); // it wiil delete the coll
 crud.updateOne("collection name", { name: "john" }, { name: "carter" }); // it will only update one collection
 crud.updateMany("collection name", { name: "john" }, { name: "carter" }); // it will update record where the condition matches
 ```
+## Next Steps
+
+- [MongoDB Documentation](https://docs.mongodb.com/manual/)
+- [Star us on GitHub](https://github.com/mongodb/node-mongodb-native)

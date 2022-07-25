@@ -52,19 +52,19 @@ By this function you can find collection in your first collection in key `gotObj
 relate(object1, object2, relation);
 ```
 
-- `object1` - {
+`object1` - {
   name:"Your collection name",
   where:{ category:"Programming" }
 }
 where is optional and this where will work exactly like mongodb where work in there find function
 
-- `object2` - {
+`object2` - {
   name:"Your second collection name",
   where:{ category:"Programming" }
 }
 this is the collection where it find the collectoin that matches and insert in object1.
 
-- `relation` - {
+`relation` - {
   id:"some_id"
 }
 id is the first collection key

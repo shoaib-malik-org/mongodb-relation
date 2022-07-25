@@ -41,8 +41,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// And you can write both other examples in your code there will be no issue
+// And you can write both these examples in your code there will be no issue recommend
 ```
+
+## Relation
+
+By this function you can find collection in your first collection in key `gotObjects`
 
 git add .
 git commit -m 'change in md file'

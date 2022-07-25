@@ -12,7 +12,12 @@
 | upgrade to v4 | [etc/notes/CHANGES_4.0.0.md](https://github.com/mongodb/node-mongodb-native/blob/HEAD/etc/notes/CHANGES_4.0.0.md) |
 | contributing  | [CONTRIBUTING.md](https://github.com/mongodb/node-mongodb-native/blob/HEAD/CONTRIBUTING.md)             |
 
+## Installation
 
+After you've created your own project using `npm init`, you can run:
+
+```bash
+npm install mongodb
 
 
 

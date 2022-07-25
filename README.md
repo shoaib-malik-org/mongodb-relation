@@ -52,7 +52,8 @@ By this function you can find collection in your first collection in key `gotObj
 relate(object1, object2, relation);
 ```
 
-`object1` - {\n
+```bash
+`object1` - {
   name:"Your collection name",
   where:{ category:"Programming" }
 }
@@ -69,6 +70,7 @@ this is the collection where it find the collectoin that matches and insert in o
 }
 id is the first collection key
 some_id is the second collection key
+```
 
 git add .
 git commit -m 'change in md file'

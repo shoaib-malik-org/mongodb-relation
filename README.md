@@ -23,7 +23,7 @@ npm install mongod-relation
 In your code:
 
 ```javascript
-var stringSimilarity = require("mongod-relation");
+var { crud, info, relation } = require("mongod-relation");
 
 // if you want to use mongod-relation functions outside the routes
 info.GetDb({
@@ -41,7 +41,6 @@ app.use((req, res, next) => {
 });
 
 // And you can write both other examples in your code there will be no issue
-
 ```
 
 git add .

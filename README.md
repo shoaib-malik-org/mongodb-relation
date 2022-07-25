@@ -52,7 +52,7 @@ By this function you can find collection in your first collection in key `gotObj
 relate(object1, object2, object3);
 ```
 
-- `object1` -> { name:"check1",where:{ category:"Programming" } } where is optional
+- `object1` -> { name:"Your collection name", where:{ category:"Programming" } } where is optional
 
 git add .
 git commit -m 'change in md file'

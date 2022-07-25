@@ -56,7 +56,7 @@ relate(object1, object2, object3);
   name:"Your collection name",
   where:{ category:"Programming" }
 }
-where is optional
+where is optional and this where will work exactly like mongodb where work in there find function
 
 git add .
 git commit -m 'change in md file'

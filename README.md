@@ -27,13 +27,13 @@ In your code for connect db:
 var { crud, info, relate } = require("mongod-relation");
 
 // if you are only going to use single database in your project
+// i am working on multiple database
 info.GetDb({
   uri: "mongodb://localhost:27017",
   dbName: "test",
 });
 
 // here you can only use the functions inside the routes
-// and you can use multiple database in your project
 app.use((req, res, next) => {
   info.GetDb({
     uri: "mongodb://localhost:27017",
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 By this function you can find collection in your first collection in key `gotObjects`
 
 ```javascript
-relate(object1, object2, relation);
+await relate(object1, object2, relation);
 ```
 
 ## Explane
@@ -88,10 +88,10 @@ By these functions you can find,insert,update,delete and replace collection in y
 
 ```javascript
 // find
-crud.findOne("collection name", { name: "john" });
-crud.findMany("collection name", { category: "Programming" });
+await crud.findOne("collection name", { name: "john" });
+await crud.findMany("collection name", { category: "Programming" });
 // # or --
-crud.findMany("collection name");
+await crud.findMany("collection name");
 
 // insert
 var object = { name: "john", age: 19 };
@@ -100,24 +100,24 @@ var array = [
   { name: "tom", age: 20 },
 ];
 
-crud.insertOne("collection name", object);
+await crud.insertOne("collection name", object);
 // # or --
-crud.insertOne("collection name", { name: "john", age: 19 });
+await crud.insertOne("collection name", { name: "john", age: 19 });
 
-crud.insertMany("collection name", array);
+await crud.insertMany("collection name", array);
 // # or --
-crud.insertMany("collection name", [
+await crud.insertMany("collection name", [
   { name: "john", age: 19 },
   { name: "tom", age: 20 },
 ]);
 
 // delete
-crud.deleteOne("collection name", { name: "john" }); // it will only delete one collection
-crud.deleteMany("collection name", { name: "john" }); // it wiil delete the collections where the condition matche
+await crud.deleteOne("collection name", { name: "john" }); // it will only delete one collection
+await crud.deleteMany("collection name", { name: "john" }); // it wiil delete the collections where the condition matche
 
 // update
-crud.updateOne("collection name", { name: "john" }, { name: "carter" }); // it will only update one collection
-crud.updateMany("collection name", { name: "john" }, { name: "carter" }); // it will update record where the condition matches
+await crud.updateOne("collection name", { name: "john" }, { name: "carter" }); // it will only update one collection
+await crud.updateMany("collection name", { name: "john" }, { name: "carter" }); // it will update record where the condition matches
 ```
 ## Next Steps
 

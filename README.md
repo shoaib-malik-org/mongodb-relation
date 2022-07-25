@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 By this function you can find collection in your first collection in key `gotObjects`
 
 ```javascript
-relate(object1, object2, object3);
+relate(object1, object2, relation);
 ```
 
 - `object1` - {
@@ -57,6 +57,18 @@ relate(object1, object2, object3);
   where:{ category:"Programming" }
 }
 where is optional and this where will work exactly like mongodb where work in there find function
+
+- `object2` - {
+  name:"Your second collection name",
+  where:{ category:"Programming" }
+}
+this is the collection where it find the collectoin that matches and insert in object1.
+
+- `relation` - {
+  id:"some_id"
+}
+id is the first collection key
+some_id is the second collection key
 
 git add .
 git commit -m 'change in md file'

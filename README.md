@@ -20,10 +20,10 @@ After you've created your own project using `npm init`, you can run:
 npm install mongod-relation
 ```
 
-In your code:
+In your code for connect db:
 
 ```javascript
-var { crud, info, relation } = require("mongod-relation");
+var { crud, info, relate } = require("mongod-relation");
 
 // if you are only going to use single database in your project
 info.GetDb({
@@ -47,6 +47,12 @@ app.use((req, res, next) => {
 ## Relation
 
 By this function you can find collection in your first collection in key `gotObjects`
+
+```javascript
+relate(object1, object2, object3);
+```
+
+
 
 git add .
 git commit -m 'change in md file'

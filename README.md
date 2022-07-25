@@ -25,13 +25,14 @@ In your code:
 ```javascript
 var { crud, info, relation } = require("mongod-relation");
 
-// if you want to use mongod-relation functions outside the routes
+// if you are only going to use single database in your project
 info.GetDb({
   uri: "mongodb://localhost:27017",
   dbName: "test",
 });
 
 // here you can only use the functions inside the routes
+// and you can use multiple database in your project
 app.use((req, res, next) => {
   info.GetDb({
     uri: "mongodb://localhost:27017",

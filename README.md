@@ -52,6 +52,7 @@ By this function you can find collection in your first collection in key `gotObj
 relate(object1, object2, relation);
 ```
 
+#### explane
 ```bash
 `object1` - {
   name:"Your collection name",
@@ -76,7 +77,7 @@ some_id is the second collection key
 `relation` - {
   "flags.test.id":"id.arr.id"
 }
-this will search through your arrays flags can be an array or object
+this will search through your arrays and objects, flags can be an array or object
 ```
 
 git add .

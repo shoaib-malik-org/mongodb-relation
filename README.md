@@ -76,8 +76,7 @@ some_id is the second collection key
 `relation` - {
   "flags.test.id":"id.arr.id"
 }
-id is the first collection key
-some_id is the second collection key
+this will search through your arrays flags can be an array or object
 ```
 
 git add .

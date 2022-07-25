@@ -18,6 +18,7 @@ After you've created your own project using `npm init`, you can run:
 
 ```bash
 npm install mongodb
+```
 
 
 

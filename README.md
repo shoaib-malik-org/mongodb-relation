@@ -6,6 +6,7 @@
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Relation        | [docs.mongodb.com/drivers/node](https://docs.mongodb.com/drivers/node)                                            |
 | CRUD            | [mongodb.github.io/node-mongodb-native/](https://mongodb.github.io/node-mongodb-native/)                          |
+| Mongodb         | [mongodb.github.io/node-mongodb-native/](https://mongodb.github.io/node-mongodb-native/)                          |
 | npm package     | [www.npmjs.com/package/mongod-relation](https://www.npmjs.com/package/mongod-relation)                            |
 | mongod-relation | [www.mongodb.com](https://www.mongodb.com)                                                                        |
 | changelog       | [HISTORY.md](https://github.com/mongodb/node-mongodb-native/blob/HEAD/HISTORY.md)                                 |
@@ -53,6 +54,7 @@ relate(object1, object2, relation);
 ```
 
 ## Explane
+
 ```bash
 `object1` - {
   name:"Your collection name",
@@ -80,6 +82,40 @@ some_id is the second collection key
 this will search through your arrays and objects, flags can be an array or object
 ```
 
-git add .
-git commit -m 'change in md file'
-git push -u origin main
+## CRUD
+
+By these functions you can find,insert,update,delete and replace collection in your collections
+
+```javascript
+// find
+crud.findOne("collection name", { name: "john" });
+crud.findMany("collection name", { category: "Programming" });
+// # or --
+crud.findMany("collection name");
+
+// insert
+var object = { name: "john", age: 19 };
+var array = [
+  { name: "john", age: 19 },
+  { name: "tom", age: 20 },
+];
+
+crud.insertOne("collection name", object);
+// # or --
+crud.insertOne("collection name", { name: "john", age: 19 });
+
+crud.insertMany("collection name", array);
+// # or --
+crud.insertMany("collection name", [
+  { name: "john", age: 19 },
+  { name: "tom", age: 20 },
+]);
+
+// delete
+crud.deleteOne("collection name", { name: "john" }); // it will only delete one collection
+crud.deleteMany("collection name", { name: "john" }); // it wiil delete the collections where the condition matche
+
+// update
+crud.updateOne("collection name", { name: "john" }, { name: "carter" }); // it will only update one collection
+crud.updateMany("collection name", { name: "john" }, { name: "carter" }); // it will update record where the condition matches
+```

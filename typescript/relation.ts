@@ -15,10 +15,20 @@ async function relation(coll1: collection, coll2: collection, where: any) {
             if (where === undefined) {
                 throw new Error("You must define the two keys for e.g { 'id': 'some_id' }\n see this error docs https://secondhandac.vercel.app");
             }
-            const Query1 = QueryMaker(coll1, coll2, where, 'keys')
-            const Query2 = QueryMaker(coll1, coll2, where, 'values')
-            const data1 = await crudFunctions.findMany(coll1.name, Query1)
-            const data2 = await crudFunctions.findMany(coll2.name, Query2)
+            var Query1, data1;
+            var Query2, data2;
+            if (coll1.name === undefined) {
+                data1 = coll1
+            } else {
+                Query1 = QueryMaker(coll1, coll2, where, 'keys')
+                data1 = await crudFunctions.findMany(coll1.name, Query1)
+            }
+            if (coll2.name === undefined) {
+                data2 = coll2
+            } else {
+                Query2 = QueryMaker(coll1, coll2, where, 'values')
+                data2 = await crudFunctions.findMany(coll2.name, Query2)
+            }
             resolve(RecordsMaker(data1, data2, where))
         })
     } catch (error) {

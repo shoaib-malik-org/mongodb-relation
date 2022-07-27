@@ -19,7 +19,6 @@ info.GetDb({
   uri: "mongodb://localhost:27017",
   dbName: "test",
 });
-
 ```
 
 ## Relation
@@ -28,6 +27,8 @@ By this function you can find collection in your first collection in key `gotObj
 
 ```javascript
 await relate(object1, object2, relation);
+await relate({ name: "john", id: 1 }, { name: "carter", id: 1 }, { id: "id" });
+// You can directly pass the object to compare by their keys
 ```
 
 ## Explane
@@ -58,6 +59,7 @@ some_id is the second collection key
 }
 this will search through your arrays and objects, flags can be an array or object
 ```
+
 ## Code example
 
 - [example](https://github.com/shoaib-malik-org/mongod-relation-example)
@@ -99,6 +101,7 @@ await crud.deleteMany("collection name", { name: "john" }); // it wiil delete th
 await crud.updateOne("collection name", { name: "john" }, { name: "carter" }); // it will only update one collection
 await crud.updateMany("collection name", { name: "john" }, { name: "carter" }); // it will update record where the condition matches
 ```
+
 ## Next Steps
 
 - [Star us on GitHub](https://github.com/shoaib-malik-org/mongodb-relation)

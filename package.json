@@ -21,6 +21,7 @@
   "homepage": "https://github.com/shoaib-malik-org/mongodb-relation#readme",
   "dependencies": {
     "mongodb": "^4.8.0",
+    "nodemon": "^2.0.19",
     "string-template": "^1.0.0"
   }
 }

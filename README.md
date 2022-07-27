@@ -1,18 +1,5 @@
 # mongod-relation
 
-## Quick Links
-
-| what            | where                                                                                                             |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Relation        | [docs.mongodb.com/drivers/node](https://docs.mongodb.com/drivers/node)                                            |
-| CRUD            | [mongodb.github.io/node-mongodb-native/](https://mongodb.github.io/node-mongodb-native/)                          |
-| Mongodb         | [mongodb.github.io/node-mongodb-native/](https://mongodb.github.io/node-mongodb-native/)                          |
-| npm package     | [www.npmjs.com/package/mongod-relation](https://www.npmjs.com/package/mongod-relation)                            |
-| mongod-relation | [www.mongodb.com](https://www.mongodb.com)                                                                        |
-| changelog       | [HISTORY.md](https://github.com/mongodb/node-mongodb-native/blob/HEAD/HISTORY.md)                                 |
-| upgrade to v4   | [etc/notes/CHANGES_4.0.0.md](https://github.com/mongodb/node-mongodb-native/blob/HEAD/etc/notes/CHANGES_4.0.0.md) |
-| contributing    | [CONTRIBUTING.md](https://github.com/mongodb/node-mongodb-native/blob/HEAD/CONTRIBUTING.md)                       |
-
 ## Installation
 
 After you've created your own project using `npm init`, you can run:
@@ -26,23 +13,13 @@ In your code for connect db:
 ```javascript
 var { crud, info, relate } = require("mongod-relation");
 
-// if you are only going to use single database in your project
-// i am working on multiple database
+// Currently you can only use one database
+// we are working on multiple database
 info.GetDb({
   uri: "mongodb://localhost:27017",
   dbName: "test",
 });
 
-// here you can only use the functions inside the routes
-app.use((req, res, next) => {
-  info.GetDb({
-    uri: "mongodb://localhost:27017",
-    dbName: "test",
-  });
-  next();
-});
-
-// And you can write both these examples in your code there will be no issue recommend
 ```
 
 ## Relation
@@ -57,19 +34,19 @@ await relate(object1, object2, relation);
 
 ```bash
 `object1` - {
-  name:"Your collection name",
-  where:{ category:"Programming" }
+  name: "Your collection name",
+  where: { category: "Programming" }
 }
 where is optional and this `where` will work exactly like mongodb where work in there find function
 
 `object2` - {
-  name:"Your second collection name",
-  where:{ category:"Programming" }
+  name: "Your second collection name",
+  where: { category: "Programming" }
 }
 this is the collection where it find the collectoin that matches and insert in object1.
 
 `relation` - {
-  id:"some_id"
+  id: "some_id"
 }
 id is the first collection key
 some_id is the second collection key
@@ -77,10 +54,13 @@ some_id is the second collection key
 # or ---
 
 `relation` - {
-  "flags.test.id":"id.arr.id"
+  "flags.test.id": "id.arr.id"
 }
 this will search through your arrays and objects, flags can be an array or object
 ```
+## Code example
+
+- [example](https://github.com/shoaib-malik-org/mongod-relation-example)
 
 ## CRUD
 
@@ -112,7 +92,7 @@ await crud.insertMany("collection name", [
 ]);
 
 // delete
-await crud.deleteOne("collection name", { name: "john" }); // it will only delete one collection
+await crud.deleteOnue("collection name", { name: "john" }); // it will only delete one collection
 await crud.deleteMany("collection name", { name: "john" }); // it wiil delete the collections where the condition matche
 
 // update
@@ -121,5 +101,4 @@ await crud.updateMany("collection name", { name: "john" }, { name: "carter" }); 
 ```
 ## Next Steps
 
-- [MongoDB Documentation](https://docs.mongodb.com/manual/)
-- [Star us on GitHub](https://github.com/mongodb/node-mongodb-native)
+- [Star us on GitHub](https://github.com/shoaib-malik-org/mongodb-relation)
